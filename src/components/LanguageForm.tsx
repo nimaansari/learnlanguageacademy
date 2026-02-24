@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { LANGUAGES, BOT_USERNAME } from "@/lib/languages";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { getLanguageCode, BOT_USERNAME } from "@/lib/languages";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Copy, Check, MessageCircle } from "lucide-react";
 
@@ -10,10 +10,12 @@ const LanguageForm = () => {
   const [submitted, setSubmitted] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const telegramLink = `https://t.me/${BOT_USERNAME}?start=${native}-${target}`;
+  const nativeCode = getLanguageCode(native);
+  const targetCode = getLanguageCode(target);
+  const telegramLink = `https://t.me/${BOT_USERNAME}?start=${nativeCode}-${targetCode}`;
 
   const handleSubmit = () => {
-    if (native && target) {
+    if (native.trim() && target.trim()) {
       setSubmitted(true);
     }
   };
@@ -37,8 +39,10 @@ const LanguageForm = () => {
           <Check className="h-8 w-8 text-primary" />
         </div>
         <div>
-          <h3 className="text-xl font-bold text-foreground">Great! Click below to start learning</h3>
-          <p className="mt-1 text-muted-foreground">Your personalized AI tutor is ready on Telegram</p>
+          <h3 className="text-xl font-bold text-foreground">Perfect! Click below to start learning on Telegram</h3>
+          <p className="mt-1 text-muted-foreground">
+            Learning <strong>{target}</strong> from <strong>{native}</strong>
+          </p>
         </div>
         <div className="rounded-lg border bg-muted/50 p-4">
           <p className="break-all text-sm text-muted-foreground">{telegramLink}</p>
@@ -68,43 +72,33 @@ const LanguageForm = () => {
         <label className="text-sm font-semibold text-foreground">
           What language do you speak? <span className="text-muted-foreground font-normal">(Your native language)</span>
         </label>
-        <Select value={native} onValueChange={setNative}>
-          <SelectTrigger className="h-12 text-base">
-            <SelectValue placeholder="Select your native language" />
-          </SelectTrigger>
-          <SelectContent>
-            {LANGUAGES.map((lang) => (
-              <SelectItem key={lang.code} value={lang.code} disabled={lang.code === target}>
-                {lang.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Input
+          value={native}
+          onChange={(e) => setNative(e.target.value)}
+          placeholder="e.g., English, Spanish, Mandarin, Arabic..."
+          className="h-12 text-base"
+        />
+        <p className="text-xs text-muted-foreground">Type any language name</p>
       </div>
 
       <div className="space-y-2">
         <label className="text-sm font-semibold text-foreground">
           What language do you want to learn?
         </label>
-        <Select value={target} onValueChange={setTarget}>
-          <SelectTrigger className="h-12 text-base">
-            <SelectValue placeholder="Select the language to learn" />
-          </SelectTrigger>
-          <SelectContent>
-            {LANGUAGES.map((lang) => (
-              <SelectItem key={lang.code} value={lang.code} disabled={lang.code === native}>
-                {lang.name}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        <Input
+          value={target}
+          onChange={(e) => setTarget(e.target.value)}
+          placeholder="e.g., Spanish, French, Swahili, Japanese..."
+          className="h-12 text-base"
+        />
+        <p className="text-xs text-muted-foreground">Type any language name</p>
       </div>
 
       <Button
         size="lg"
         className="w-full gap-2 text-base font-semibold h-12"
         onClick={handleSubmit}
-        disabled={!native || !target}
+        disabled={!native.trim() || !target.trim()}
       >
         <ExternalLink className="h-5 w-5" />
         Get Telegram Link
