@@ -1,73 +1,44 @@
-# Welcome to your Lovable project
+# Learn Language Academy
 
-## Project info
+An AI-powered language learning platform that connects users with a conversational AI tutor on Telegram. Users choose their native language and a target language, then get a personalized Telegram bot link to start practicing immediately.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## What It Does
 
-## How can I edit this code?
+- **Conversational AI Tutor** — Practice any language through real conversations with an AI, available 24/7
+- **100+ Languages** — Supports African, Asian, European, Middle Eastern, Indigenous, and rare languages
+- **Telegram Integration** — Generates a personalized deep link to the Telegram bot based on language preferences
+- **Zero Friction** — No sign-up, no credit card. Choose your languages and start learning
 
-There are several ways of editing your application.
+## Tech Stack
 
-**Use Lovable**
+- React 18 + TypeScript
+- Vite (build tool)
+- Tailwind CSS (styling)
+- React Router (routing)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The dev server starts at `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build
 
-**Use GitHub Codespaces**
+```sh
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Project Structure
 
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```
+src/
+├── pages/           # Route pages (Index, NotFound)
+├── components/      # UI components (LanguageForm, HowItWorks, SupportedLanguages)
+│   └── ui/          # Reusable primitives (Button, Input)
+├── lib/             # Utilities and language mappings
+├── hooks/           # Custom React hooks
+└── assets/          # Static images
+```
