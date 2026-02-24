@@ -1,6 +1,7 @@
 import heroImage from "@/assets/hero-illustration.png";
 import LanguageForm from "@/components/LanguageForm";
 import HowItWorks from "@/components/HowItWorks";
+import SupportedLanguages from "@/components/SupportedLanguages";
 import { GraduationCap } from "lucide-react";
 
 const Index = () => {
@@ -24,7 +25,7 @@ const Index = () => {
           </h1>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground md:text-xl">
             Conversation-first, affordable, available 24/7.
-            <br className="hidden sm:block" /> No credit card required.
+            <br className="hidden sm:block" /> 100+ languages supported. No credit card required.
           </p>
           <a
             href="#get-started"
@@ -47,18 +48,21 @@ const Index = () => {
           <div className="rounded-2xl border bg-card p-6 shadow-xl shadow-primary/5 md:p-8">
             <div className="mb-6 text-center">
               <h2 className="text-2xl font-bold text-foreground">Get Started in 2 Steps</h2>
-              <p className="mt-1 text-sm text-muted-foreground">Choose your native language and what you want to learn</p>
+              <p className="mt-1 text-sm text-muted-foreground">Choose any language you speak and any language you want to learn</p>
             </div>
             <LanguageForm />
           </div>
         </div>
       </section>
 
+      {/* Supported Languages */}
+      <SupportedLanguages />
+
       {/* Footer */}
       <footer className="border-t px-5 py-8">
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-sm text-muted-foreground">
-            No credit card required. Start free.
+            No credit card required. Start free. Choose any language.
           </p>
           <p className="mt-2 text-xs text-muted-foreground">
             Join thousands learning languages with us. Available on Telegram, Discord, and Web.
