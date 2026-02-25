@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getLanguageCode, BOT_USERNAME } from "@/lib/languages";
+import { getLanguageCode } from "@/lib/languages";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Copy, Check, MessageCircle } from "lucide-react";
@@ -12,7 +12,7 @@ const LanguageForm = () => {
 
   const nativeCode = getLanguageCode(native);
   const targetCode = getLanguageCode(target);
-  const telegramLink = `https://t.me/${BOT_USERNAME}?start=${nativeCode}-${targetCode}`;
+  const telegramLink = `https://t.me/learnLanguageAcademyBot?start=${nativeCode}-${targetCode}`;
 
   const handleSubmit = () => {
     if (native.trim() && target.trim()) {
